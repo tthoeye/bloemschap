@@ -1,0 +1,12 @@
+{
+  "name": "bloemschap-autodeploy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "autodeploy": "node ./tools/autodeploy.mjs"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.3"
+  }
+}
+
