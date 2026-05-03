@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bloemschap | Romantics Only</title>
+    <meta
+      name="description"
+      content="Stuur een Bloemschap naar iemand die je nauw aan het hart ligt. Voeg je persoonlijke boodschap toe en ga door naar checkout."
+    />
+
+    <style>
+      :root {
+        /* Extracted from romanticsonly.be CSS (dominant palette) */
+        --ro-ink: #3f524c;
+        --ro-primary: #5a7b5e;
+        --ro-primary-2: #769f7a;
+        --ro-surface: #ffffff;
+        --ro-bg: #e6efec;
+        --ro-border: rgba(63, 82, 76, 0.18);
+        --ro-accent: #e9322d;
+        --shadow: 0 18px 55px rgba(63, 82, 76, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          "Apple Color Emoji",
+          "Segoe UI Emoji";
+        color: var(--ro-ink);
+        background: radial-gradient(
+            1200px 700px at 15% 10%,
+            rgba(118, 159, 122, 0.2),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 650px at 85% 20%,
+            rgba(90, 123, 94, 0.2),
+            transparent 55%
+          ),
+          var(--ro-bg);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .wrap {
+        min-height: 100%;
+        display: grid;
+        place-items: center;
+        padding: 28px 16px;
+      }
+
+      .card {
+        width: min(980px, 100%);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(63, 82, 76, 0.12);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 0;
+      }
+
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .left {
+        padding: 26px 26px 24px;
+        background: linear-gradient(
+          180deg,
+          rgba(230, 239, 236, 0.45),
+          rgba(255, 255, 255, 0.6)
+        );
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--ro-border);
+        background: rgba(255, 255, 255, 0.65);
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 0.02em;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--ro-primary-2);
+        box-shadow: 0 0 0 4px rgba(118, 159, 122, 0.18);
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(22px, 3vw, 36px);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      .sub {
+        margin: 0 0 18px;
+        color: rgba(63, 82, 76, 0.85);
+        line-height: 1.5;
+        max-width: 62ch;
+      }
+
+      label {
+        display: block;
+        font-weight: 650;
+        margin: 14px 0 8px;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 160px;
+        resize: vertical;
+        border: 1px solid rgba(63, 82, 76, 0.22);
+        border-radius: 14px;
+        padding: 14px 14px;
+        font: inherit;
+        line-height: 1.4;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ro-ink);
+        outline: none;
+        box-shadow: 0 0 0 0 rgba(118, 159, 122, 0.35);
+        transition: box-shadow 140ms ease, border-color 140ms ease,
+          transform 140ms ease;
+      }
+
+      textarea:focus {
+        border-color: rgba(90, 123, 94, 0.65);
+        box-shadow: 0 0 0 4px rgba(118, 159, 122, 0.22);
+      }
+
+      .actions {
+        margin-top: 14px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        appearance: none;
+        border: 1px solid rgba(63, 82, 76, 0.18);
+        background: linear-gradient(180deg, var(--ro-primary-2), var(--ro-primary));
+        color: #fff;
+        border-radius: 999px;
+        padding: 12px 16px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 12px 26px rgba(90, 123, 94, 0.28);
+        transition: transform 120ms ease, box-shadow 120ms ease,
+          filter 120ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 30px rgba(90, 123, 94, 0.34);
+        filter: saturate(1.02);
+      }
+
+      .btn:active {
+        transform: translateY(0px);
+      }
+
+      .btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(118, 159, 122, 0.28),
+          0 12px 26px rgba(90, 123, 94, 0.28);
+      }
+
+      .note {
+        font-size: 13px;
+        color: rgba(63, 82, 76, 0.75);
+      }
+
+      .right {
+        padding: 22px;
+        background: rgba(63, 82, 76, 0.04);
+        border-left: 1px solid rgba(63, 82, 76, 0.1);
+        display: grid;
+        align-content: start;
+        gap: 12px;
+      }
+
+      @media (max-width: 860px) {
+        .right {
+          border-left: none;
+          border-top: 1px solid rgba(63, 82, 76, 0.1);
+        }
+      }
+
+      .imgWrap {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(63, 82, 76, 0.12);
+        background: #fff;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .badgeRow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding-top: 2px;
+      }
+
+      .badge {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(63, 82, 76, 0.14);
+        background: rgba(255, 255, 255, 0.7);
+        color: rgba(63, 82, 76, 0.82);
+      }
+
+      .badgeAccent {
+        border-color: rgba(233, 50, 45, 0.25);
+        background: rgba(233, 50, 45, 0.08);
+        color: rgba(233, 50, 45, 0.95);
+        font-weight: 650;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card" aria-label="Bloemschap">
+        <div class="grid">
+          <div class="left">
+            <div class="kicker">
+              <span class="dot" aria-hidden="true"></span>
+              Romantics Only • Bloemschap
+            </div>
+
+            <h1>Stuur een Bloemschap naar iemand die je nauw aan het hart ligt!</h1>
+            <p class="sub">
+              Schrijf hieronder je boodschap. We voegen die toe aan het boeket dat bezorgd wordt.
+            </p>
+
+            <form action="checkout.html" method="get">
+              <label for="message">Jouw boodschap</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Typ hier je boodschap…"
+                maxlength="800"
+                required
+              ></textarea>
+
+              <div class="actions">
+                <button class="btn" type="submit">
+                  Verder naar checkout
+                  <span aria-hidden="true">→</span>
+                </button>
+                <span class="note">Checkout-pagina maken we later.</span>
+              </div>
+            </form>
+          </div>
+
+          <aside class="right" aria-label="Preview">
+            <div class="imgWrap">
+              <img
+                src="https://44a6c80ff9.clvaw-cdnwnd.com/b94f3baaaf906e4f53c019b6c29a664c/200000120-e0124e0125/romanticsonly.webp?ph=44a6c80ff9"
+                alt="Romantics Only bloemenserre met boeketten"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="badgeRow" aria-label="Kenmerken">
+              <span class="badge">Persoonlijke boodschap</span>
+              <span class="badge">Boeket + kaartje</span>
+              <span class="badge badgeAccent">Vandaag nog verrassen</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
